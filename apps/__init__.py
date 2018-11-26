@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_session import Session
 from flask_wtf import CSRFProtect
 from logging.handlers import RotatingFileHandler
+from apps.utils.commons import ReConverter
 
 #MySQL数据库
 db = SQLAlchemy()
@@ -19,7 +20,7 @@ csrf = CSRFProtect()
 #设置日志记录等级
 logging.basicConfig(level=logging.DEBUG)
 #创建日志记录器 指明日志保存路径 每个日志文件最大大小 保存日志文件上限个数
-file_log_handler = RotatingFileHandler("logs/log", maxBytes=1024*1024*1024, backupCount=10)
+file_log_handler = RotatingFileHandler("logs/ihome.log", maxBytes=1024*1024*1024, backupCount=10)
 #c创建日志记录格式
 formatter = logging.Formatter('%(levelname)s %(filename)s:%(lineno)d %(message)s')
 #为创建的日志记录器设置日志记录格式
@@ -54,9 +55,16 @@ def create_app(config_name):
   # CSRFProtect(app)
   csrf.init_app(app)
 
-  #注册蓝图
+  #为flask添加自定义的转换器
+  app.url_map.converters['re'] = ReConverter
+
+  #注册蓝图 蓝图可能会用到上边注册到app中的应用
   from apps import  api_1_0
   app.register_blueprint(api_1_0.api, url_prefix="/api/v1.0")
+
+  #注册提供静态文件的蓝图
+  from apps import web_html
+  app.register_blueprint(web_html.html)
 
   return app
 
