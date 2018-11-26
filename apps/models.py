@@ -19,7 +19,6 @@ class User(BaseModel, db.Model):
   real_name = db.Column(db.String(32)) #真实姓名
   id_card = db.Column(db.String(20)) #身份证号码
   avatar_url = db.Column(db.String(128)) #用户头像路径
-  extra = db.Column(db.String(128)) #
 
   houses = db.relationship("House", backref="user") #用户发布的房屋
   orders = db.relationship("Order", backref="user") #用户下的订单
