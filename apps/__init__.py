@@ -47,7 +47,9 @@ def create_app(config_name):
 
   #Redis数据库
   global rdb
-  rdb = redis.StrictRedis(host=config_class.REDIS_HOST, port=config_class.REDIS_PORT)
+  rdb = redis.StrictRedis(host=config_class.REDIS_HOST,
+                          port=config_class.REDIS_PORT,
+                          db=config_class.REDIS_IMG_DB)
 
   #利用flask_session 将session对象存储到redis中
   Session(app)
