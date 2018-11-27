@@ -4,7 +4,6 @@ from flask_wtf import csrf
 
 #提供静态文件的蓝图
 html = Blueprint("web_html", __name__)
-print('.......')
 #http://127.0.0.1/()
 #http://127.0.0.1/(index.html)
 #http://127.0.0.1/(register.html)
@@ -35,7 +34,7 @@ def get_html(html_file_name):
 
   #设置cookie值
   resp.set_cookie("csrf_token", csrf_token)
-  print('-------')
+
   return resp
 
 
