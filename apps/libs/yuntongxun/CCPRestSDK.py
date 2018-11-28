@@ -122,7 +122,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -172,7 +172,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -223,7 +223,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -280,7 +280,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -342,7 +342,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -399,7 +399,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -445,7 +445,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -497,7 +497,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -537,7 +537,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -587,7 +587,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -629,7 +629,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -680,7 +680,7 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
@@ -732,62 +732,62 @@ class REST:
             if self.Iflog:
                 self.log(url,body,data)
             return locations
-        except Exception, error:
+        except Exception as error:
             if self.Iflog:
                 self.log(url,body,data)
             return {'172001':'网络错误'}
     
     #子帐号鉴权
     def subAuth(self):
-        if(self.ServerIP==""):
-            print('172004');
-            print('IP为空');
+        if self.ServerIP=="" :
+            print('172004')
+            print('IP为空')
         
-        if(self.ServerPort<=0):
-            print('172005');
-            print('端口错误（小于等于0）');
+        if self.ServerPort<=0:
+            print('172005')
+            print('端口错误（小于等于0）')
         
-        if(self.SoftVersion==""):
-            print('172013');
-            print('版本号为空');
+        if self.SoftVersion=="":
+            print('172013')
+            print('版本号为空')
         
-        if(self.SubAccountSid==""):
-            print('172008');
-            print('子帐号为空');
+        if self.SubAccountSid=="":
+            print('172008')
+            print('子帐号为空')
         
-        if(self.SubAccountToken==""):
-            print('172009');
-            print('子帐号令牌为空');
+        if self.SubAccountToken=="":
+            print('172009')
+            print('子帐号令牌为空')
         
-        if(self.AppId==""):
-            print('172012');
-            print('应用ID为空');
+        if self.AppId=="":
+            print('172012')
+            print('应用ID为空')
     
     #主帐号鉴权
     def accAuth(self):
-        if(self.ServerIP==""):
-            print('172004');
-            print('IP为空');
+        if self.ServerIP=="":
+            print('172004')
+            print('IP为空')
         
-        if(self.ServerPort<=0):
-            print('172005');
-            print('端口错误（小于等于0）');
+        if self.ServerPort<=0:
+            print('172005')
+            print('端口错误（小于等于0）')
         
-        if(self.SoftVersion==""):
-            print('172013');
-            print('版本号为空');
+        if self.SoftVersion=="":
+            print('172013')
+            print('版本号为空')
         
-        if(self.AccountSid==""):
-            print('172006');
-            print('主帐号为空');
+        if self.AccountSid=="":
+            print('172006')
+            print('主帐号为空')
         
-        if(self.AccountToken==""):
-            print('172007');
-            print('主帐号令牌为空');
+        if self.AccountToken=="":
+            print('172007')
+            print('主帐号令牌为空')
         
-        if(self.AppId==""):
-            print('172012');
-            print('应用ID为空');
+        if self.AppId=="":
+            print('172012')
+            print('应用ID为空')
 
 
 
