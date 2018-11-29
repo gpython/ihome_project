@@ -4,7 +4,7 @@ from apps.utils.captcha.captcha import captcha
 from apps import rdb, constants
 from apps.utils.response_code import RET
 
-#GET http://127.0.0.1:5000/api/v1.0/image_codes/<image_code_id>
+#GET /api/v1.0/image_codes/<image_code_id>
 @api.route("/image_codes/<image_code_id>")
 def get_image_code(image_code_id):
   """
