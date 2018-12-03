@@ -16,7 +16,6 @@ def set_user_avatar():
   """
   #装饰器代码中 已经将user_id 保存到g对象中 所以视图中可以直接获取
   user_id = g.user_id
-  print("user_id:", user_id)
 
   #获取图片
   image_file = request.files.get("avatar")
