@@ -15,7 +15,8 @@ LOGIN_ERROR_MAX_TIMES = 5
 #登录错误限制的时间 单位 秒
 LOGIN_ERROR_FORBID_TIME = 600
 
-QINIU_URL_DOMAIN = "http://o91qujnqh.bkt.clouddn.com/"
+#qiniu ihome存储空间域名
+QINIU_URL_DOMAIN = "http://pj52r30u8.bkt.clouddn.com/"
 
 
 HOUSE_DETAIL_DISPLAY_COUNTS = 10
