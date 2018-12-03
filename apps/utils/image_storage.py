@@ -3,8 +3,8 @@ from qiniu import Auth, put_file, etag, put_data
 import qiniu.config
 
 #需要填写你的 Access Key 和 Secret Key
-access_key = 's2SADxX6nwnYbOF1Y-0gdviHLL8xDiUY4NppMHs3'     #t access key
-secret_key = 'oKKeerRYiHqdQkIPZZ00aGZXSz--h8EjF2vdSah2'     #t secret key
+access_key = '3s2SADxX6nwnYbOF1Y-0gdviHLL8xDiUY4NppMHs'     #t access key
+secret_key = '2oKKeerRYiHqdQkIPZZ00aGZXSz--h8EjF2vdSah'     #t secret key
 
 
 def storage(file_data):
