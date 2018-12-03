@@ -20,6 +20,7 @@ def login_required(view_func):
   def wrapper(*args, **kwargs):   #被装饰函数的参数
     #判断用户登录状态
     user_id = session.get("user_id")
+    print("login_required_user_id:", user_id)
 
     #如果用户登录 执行视图函数
     if user_id is not None:
