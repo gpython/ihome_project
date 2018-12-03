@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from qiniu import Auth, put_file, etag
+from qiniu import Auth, put_file, etag, put_data
 import qiniu.config
 
 #需要填写你的 Access Key 和 Secret Key
@@ -21,6 +21,7 @@ def storage(file_data):
   #上传到七牛后保存的文件名 若不指定文件名 则随机生成文件名
   #若不指定key 以下函数参数使用None来代替
   # key = 'my-python-logo.png'
+  # key = ""
 
   #生成上传 Token，可以指定过期时间等
   token = q.upload_token(bucket_name, None, 3600)
@@ -29,9 +30,10 @@ def storage(file_data):
   #file_data 文件二进制数据
   # localfile = './sync/bbb.jpg'
 
-  ret, info = put_file(token, None, file_data)
-  print(info)
-  print(ret)
+  #流上传 使用put_data
+  ret, info = put_data(token, None, file_data)
+  # print(info)
+  # print(ret)
   if info.status_code == 200:
     #上传成功 返回文件名
     return ret.get("key")
@@ -42,6 +44,6 @@ def storage(file_data):
   # assert ret['hash'] == etag(localfile)
 
 if __name__ == '__main__':
-  with open("./1.png") as f:
+  with open("1.jpg", "rb") as f:
     file_data = f.read()
     storage(file_data)
