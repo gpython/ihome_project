@@ -6,7 +6,7 @@ from flask import g, current_app, jsonify, request
 from apps.utils.response_code import RET
 from apps.utils.image_storage import storage
 
-@api.route("/user/avatar". methods=["POST"])
+@api.route("/users/avatar", methods=["POST"])
 @login_required
 def set_user_avatar():
   """
@@ -16,6 +16,7 @@ def set_user_avatar():
   """
   #装饰器代码中 已经将user_id 保存到g对象中 所以视图中可以直接获取
   user_id = g.user_id
+  print("user_id:", user_id)
 
   #获取图片
   image_file = request.files.get("avatar")
