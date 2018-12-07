@@ -55,7 +55,7 @@ def create_app(config_name):
   Session(app)
   #为flask补充csrf防护
   # CSRFProtect(app)
-  csrf.init_app(app)
+  # csrf.init_app(app)
 
   #为flask添加自定义的转换器
   app.url_map.converters['re'] = ReConverter

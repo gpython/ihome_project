@@ -18,5 +18,8 @@ LOGIN_ERROR_FORBID_TIME = 600
 #qiniu ihome存储空间域名
 QINIU_URL_DOMAIN = "http://pj52r30u8.bkt.clouddn.com/"
 
+#城区信息缓存时间 秒
+AREA_INFO_REDIS_CACHE_EXPIRES = 7200
+
 
 HOUSE_DETAIL_DISPLAY_COUNTS = 10
