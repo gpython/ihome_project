@@ -6,6 +6,8 @@ from apps.utils.captcha.captcha import captcha
 from apps import rdb, constants, db
 from apps.utils.response_code import RET
 from apps.models import User
+# from apps.tasks.task_sms import send_sms
+from apps.tasks.sms.tasks import send_sms
 
 #GET /api/v1.0/image_codes/<image_code_id>
 @api.route("/image_codes/<image_code_id>")
@@ -127,15 +129,29 @@ def get_sms_code(mobile):
     return jsonify(errno=RET.DBERR, errmsg="保存短信验证码异常")
 
   #发送短信 第三方服务有网络请求 try except
-  try:
-    ccp = CCP()
-    result = ccp.send_tempalte_sms(mobile, [sms_code, int(constants.SMS_CODE_REDIS_EXPIRES/60), 1], 1)
-  except Exception as e:
-    current_app.logger.error(e)
-    return jsonify(errno=RET.THIRDERR, errmsg="发送失败")
+  # try:
+  #   ccp = CCP()
+  #   result = ccp.send_tempalte_sms(mobile, [sms_code, int(constants.SMS_CODE_REDIS_EXPIRES/60)], 1)
+  # except Exception as e:
+  #   current_app.logger.error(e)
+  #   return jsonify(errno=RET.THIRDERR, errmsg="发送失败")
 
-  if result == 0:
-    return jsonify(errno=RET.OK, errmsg="发送成功")
-  else:
-    return jsonify(errno=RET.THIRDERR, errmsg="短信发送失败")
-  #返回值
+  # 返回值
+  # if result == 0:
+  #   return jsonify(errno=RET.OK, errmsg="发送成功")
+  # else:
+  #   return jsonify(errno=RET.THIRDERR, errmsg="短信发送失败")
+
+
+  #使用celery异步发送短信 delay函数调用后立即返回
+  send_sms.delay(mobile, [sms_code, int(constants.SMS_CODE_REDIS_EXPIRES/60)], 1)
+
+  #返回的是异步执行的结果
+  # 通过get方法返回能获取celery异步执行的结果
+  # get方法默认是阻塞的行为 会等到有执行结果之后才返回
+  # get方法也接受参数timeout 超时时间 超时时间后还拿不到结果 则返回
+  # print(result.id)
+  #直接返回返回值
+  return jsonify(errnbo=RET.OK, errmsg="发送成功")
+
+
